@@ -1,0 +1,48 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f2f0ea;
+  color: #20201d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  display: grid;
+  min-height: 100vh;
+  align-content: center;
+  padding: clamp(1.5rem, 6vw, 6rem);
+}
+
+.brand,
+h1,
+.status {
+  margin: 0;
+}
+
+.brand {
+  font-size: clamp(4rem, 16vw, 12rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.8;
+}
+
+h1 {
+  margin-top: 1rem;
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.status {
+  margin-top: clamp(3rem, 10vh, 8rem);
+  font-size: 1rem;
+}
+
