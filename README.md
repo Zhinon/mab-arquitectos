@@ -3,6 +3,10 @@
 Las tres propuestas se corrigieron el 21/10/2026. Consultar `IMPLEMENTACION.md`
 para los cambios y verificaciones, y `DESIGN.md` para los criterios visuales.
 
+La cuarta opción, `/4/` (**Adicionales**), reúne bocetos SVG animados de M&G,
+SG, El Cerezo y Las Candelas. Los SVG editables y su ZIP se encuentran en
+`assets/sketches/`; su procedencia y regeneración se documentan allí.
+
 Landing institucional de MAB Arquitectos.
 
 ## Ver el sitio localmente

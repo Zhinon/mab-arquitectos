@@ -1,0 +1,31 @@
+:root{--paper:#f6f3ea;--line:#c7c2b3}
+.site-header{background:var(--paper);border-bottom:1px solid var(--line)}
+.extras-intro{display:grid;grid-template-columns:1.3fr 1fr;align-items:end;gap:70px;padding:55px var(--pad) 50px}
+.extras-intro h1{font-size:clamp(48px,6.4vw,96px);line-height:1;font-weight:450;letter-spacing:-.04em}
+.extras-intro h1 span{background:var(--yellow);padding:0 .06em .02em;margin-left:-.06em}
+.extras-intro>div{max-width:43ch;padding-bottom:5px}.extras-intro p{font-size:20px;line-height:1.5}
+.intro-link{display:inline-flex;align-items:center;gap:22px;text-decoration:none;border-bottom:1px solid;padding:13px 0 8px;margin-top:20px;font-size:16px}.intro-link svg{width:23px;height:23px;stroke:currentColor;stroke-width:1.5}
+.project-index{position:sticky;top:0;z-index:25;display:flex;gap:34px;align-items:center;padding:6px var(--pad);background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:thin;scrollbar-color:#99947e var(--paper)}
+.project-index a{min-height:46px;display:flex;align-items:center;flex-shrink:0;text-decoration:none;font-size:15px;white-space:nowrap}.project-index a:hover,.project-index a:focus-visible{text-decoration:underline;text-decoration-color:#c4b017;text-decoration-thickness:3px;text-underline-offset:8px}
+.drawing-collection{padding:0 var(--pad)}
+.drawing-project{padding:55px 0 64px;scroll-margin-top:78px;border-bottom:1px solid var(--line)}.drawing-project:last-child{border:0}
+.drawing-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:22px}.drawing-heading h2{font-size:clamp(29px,3.2vw,48px);font-weight:450}.drawing-heading p{font-size:16px;margin-top:10px;max-width:58ch}
+.download-svg{display:flex;align-items:center;gap:10px;min-height:44px;font-size:14px;text-decoration:none;flex-shrink:0}.download-svg svg,.replay-drawing svg,.sequence-actions svg{width:21px;height:21px;stroke:currentColor;stroke-width:1.4}.download-svg:hover span{text-decoration:underline}
+.drawing-paper{background:#fffcf4;box-shadow:2px 9px 24px #40391a0d}
+.drawing-stage{position:relative;aspect-ratio:16/9;isolation:isolate;overflow:hidden;background:#fffcf4}
+.drawing-layer,.project-original{position:absolute;inset:0;width:100%;height:100%;margin:0;object-fit:contain}.drawing-layer svg{display:block;width:100%;height:100%;overflow:hidden}
+.project-original{opacity:0;clip-path:inset(0 100% 0 0);pointer-events:none}
+.drawing-stage.is-image .project-original{opacity:1;clip-path:inset(0)}
+.drawing-stage.is-image .drawing-layer{visibility:hidden}
+.drawing-stage.is-transitioning .drawing-layer{visibility:visible}
+.drawing-stage.is-pending .art-line{stroke-dasharray:1 1;stroke-dashoffset:1}.drawing-stage.is-pending .tone-plane{opacity:0}
+.drawing-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:76px;padding:12px 22px;border-top:1px solid #e8e2d4}
+.view-options{display:flex;align-items:center;gap:5px}.view-options button{min-height:44px;min-width:80px;padding:10px 16px;border:0;background:transparent;font-size:15px}.view-options button[aria-pressed=true]{background:var(--yellow)}.view-options button:hover{background:#ede8d8}
+.drawing-status{font-size:14px;color:#5e5d52;text-align:center}.playback{display:flex;align-items:center;gap:12px}.replay-drawing,.pause-drawing{display:flex;align-items:center;justify-content:center;gap:10px;min-height:44px;background:transparent;border:1px solid var(--line);padding:9px 14px;font-size:14px}.pause-drawing[hidden]{display:none}.replay-drawing:hover,.pause-drawing:hover{background:var(--yellow);border-color:var(--yellow)}
+.sequence{padding:65px var(--pad);display:grid;grid-template-columns:1.2fr 1fr;gap:80px;border-top:1px solid var(--line);background:#ebe6d8}.sequence h2{font-weight:450}.sequence p{font-size:18px;max-width:48ch;margin-top:25px}.sequence-actions{align-self:end}.sequence-actions p{margin:0 0 22px}.sequence-actions .button{font-size:15px;gap:26px}.contact{background:var(--yellow)}
+@media(max-width:900px){.extras-intro{grid-template-columns:1fr;gap:30px;padding-top:40px;padding-bottom:35px}.extras-intro h1{font-size:clamp(48px,8vw,72px)}.extras-intro>div{max-width:50ch}.extras-intro p{font-size:18px}.project-index{gap:26px}.drawing-project{padding-top:35px;padding-bottom:45px}.drawing-heading{align-items:start}.drawing-heading p{font-size:16px}.drawing-toolbar{flex-wrap:wrap;gap:12px;padding:12px 16px}.drawing-status{order:3;flex:0 0 100%;text-align:left;border-top:1px solid #e8e2d4;padding-top:10px;font-size:13px}.sequence{grid-template-columns:1fr;gap:30px}.sequence-actions{max-width:500px}}
+@media(max-width:600px){.extras-intro{padding-top:30px;gap:26px}.extras-intro h1{font-size:clamp(43px,11vw,62px)}.extras-intro p{font-size:17px}.intro-link{margin-top:10px;font-size:15px}.project-index{gap:24px;padding-top:3px;padding-bottom:3px}.project-index a{font-size:14px;min-height:44px}.drawing-project{scroll-margin-top:65px}.drawing-heading{display:block;margin-bottom:16px}.drawing-heading h2{font-size:29px}.drawing-heading p{margin-top:9px;line-height:1.45}.download-svg{margin-top:10px;font-size:13px;width:fit-content}.download-svg svg{width:18px;height:18px}.drawing-stage{aspect-ratio:1.15}.drawing-toolbar{gap:8px;padding:10px}.view-options{gap:0}.view-options button{font-size:14px;min-width:64px;padding:10px}.replay-drawing,.pause-drawing{font-size:13px;padding:9px 10px;gap:7px}.replay-drawing svg{width:18px;height:18px}.playback{gap:6px;margin-left:auto}.pause-drawing{flex:1}.drawing-status{font-size:13px}.sequence{padding-top:45px;padding-bottom:45px}.sequence h2{font-size:31px}.sequence p{font-size:17px}.sequence-actions .button{font-size:14px;padding:14px;gap:14px}.contact h2{font-size:34px}}
+@media(max-width:360px){.playback{width:100%;justify-content:flex-end}.replay-drawing{flex:1}.drawing-heading h2{font-size:27px}}
+@media(min-width:901px){.drawing-stage{height:min(520px,60svh);max-height:520px;aspect-ratio:auto}.drawing-project{scroll-margin-top:12px}}
+.view-options button[aria-pressed=true]:hover{background:var(--yellow)}
+@media(prefers-reduced-motion:reduce){.replay-drawing,.pause-drawing{display:none!important}}

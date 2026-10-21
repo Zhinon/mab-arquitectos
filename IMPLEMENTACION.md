@@ -1,5 +1,22 @@
 # Correcciones implementadas — 21 de octubre de 2026
 
+## Adicionales: cuarta opción
+
+Se agregó `/4/` con cuatro estudios SVG: Vivienda M&G, Complejo SG, Complejo El
+Cerezo y Vivienda en Las Candelas. La opción `4 · Adicionales` está presente
+en el selector de las cuatro páginas. Los dibujos tienen contornos principales
+y detalles derivados de las imágenes reales disponibles, sin imágenes raster
+incrustadas. Pueden descargarse individualmente o juntos como ZIP.
+
+Cada secuencia dibuja las líneas y revela la imagen del proyecto. Incluye
+pausa, continuación, repetición y vistas estáticas Boceto/Imagen. Respeta la
+preferencia de movimiento reducido y mantiene los dibujos visibles sin JS.
+
+Verificado en navegador: pausa/continuación, cambio de vista y adaptación a
+320, 390, 768, 1024 y 1440 px sin desbordes detectados. Las tres propuestas
+anteriores también se comprobaron a 320 px con el selector ampliado. Los cuatro
+SVG se validaron como XML y se comprobó que contienen solo geometría vectorial.
+
 ## Cambios
 
 - Propuesta 1: escena fotográfica integrada, bloque amarillo detrás del lema,

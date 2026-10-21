@@ -1,4 +1,4 @@
-# MAB Arquitectos — tres propuestas corregidas
+# MAB Arquitectos — propuestas y adicionales
 
 ## Autoridad visual
 
@@ -62,3 +62,24 @@ desbordes, carga de imágenes, lectura, funcionamiento del menú y las galerías
 Comparar las portadas al mismo tamaño con las referencias. La meta es preservar
 composición y carácter usando el material real, no reproducir edificios
 alterados que aparezcan en las imágenes conceptuales.
+
+## Adicionales — `/4/`
+
+Cuarta opción del selector: `4 · Adicionales`. Es una colección de estudios
+vectoriales de Vivienda M&G, Complejo SG, Complejo El Cerezo y Vivienda en Las
+Candelas. Conserva papel cálido, grafito, amarillo y las fuentes del estudio.
+
+Cada dibujo contiene contornos de arquitectura trazados sobre el encuadre real
+y líneas de detalle extraídas de la misma imagen. Son SVG editables sin imágenes
+raster incrustadas, con descargas individuales y un ZIP conjunto. Son bocetos
+visuales, sin cotas ni pretensión de sustituir documentación de proyecto.
+
+Al entrar en una obra se dibujan los contornos y detalles, y se revela la imagen
+del proyecto. La secuencia dura 5,2 segundos, se reproduce una vez y permite
+pausar, continuar o repetir. Los botones Boceto e Imagen detienen la secuencia
+y dejan la vista elegida. Con movimiento reducido se presenta el boceto estático.
+
+Las capas SVG e imagen comparten encuadre y proporciones; el dibujo se adapta al
+ancho disponible. La navegación de proyectos permite desplazamiento horizontal
+solo dentro de esa navegación en teléfonos angostos. El selector global sigue
+presente en las cuatro rutas.

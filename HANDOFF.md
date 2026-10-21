@@ -6,6 +6,10 @@
 > corresponden a la implementación anterior; consultar esos dos documentos
 > para las correcciones. Se mantienen las tres rutas públicas existentes.
 
+> Se agregó `/4/`, **Adicionales**, con cuatro bocetos SVG animados y descargables:
+> M&G, SG, El Cerezo y Las Candelas. El selector de todas las propuestas incorpora
+> esta cuarta opción. Fuentes de los bocetos: `assets/sketches/README.md`.
+
 Este documento reúne el contexto, las decisiones y el estado técnico del sitio
 para continuar el trabajo en otro modelo o en otra sesión sin depender del
 historial de conversación.
