@@ -1,5 +1,11 @@
 # Handoff — MAB Arquitectos
 
+> Actualización del 21/10/2026: las tres propuestas se corrigieron localmente
+> para recuperar sus referencias visuales. Ver `IMPLEMENTACION.md` y `DESIGN.md`
+> para el estado actual. Las descripciones visuales de las secciones siguientes
+> corresponden a la implementación anterior; consultar esos dos documentos
+> para las correcciones. Se mantienen las tres rutas públicas existentes.
+
 Este documento reúne el contexto, las decisiones y el estado técnico del sitio
 para continuar el trabajo en otro modelo o en otra sesión sin depender del
 historial de conversación.

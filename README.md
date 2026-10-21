@@ -1,5 +1,8 @@
 # MAB Arquitectos
 
+Las tres propuestas se corrigieron el 21/10/2026. Consultar `IMPLEMENTACION.md`
+para los cambios y verificaciones, y `DESIGN.md` para los criterios visuales.
+
 Landing institucional de MAB Arquitectos.
 
 ## Ver el sitio localmente
