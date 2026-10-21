@@ -1,0 +1,4 @@
+@media (min-width: 801px) {
+  .hero-band { width: min(470px, 38vw); }
+  .hero h1 { font-size: clamp(3.4rem, 4vw, 5rem); }
+}

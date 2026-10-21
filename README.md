@@ -10,8 +10,14 @@ Desde esta carpeta, ejecutar:
 python3 -m http.server 8080
 ```
 
-Luego abrir <http://localhost:8080>.
+Luego abrir cualquiera de las tres propuestas:
+
+- Opción 1 — Casa desplegada: <http://localhost:8080/>
+- Opción 2 — Franja de obra: <http://localhost:8080/2/>
+- Opción 3 — Mesa de proyecto: <http://localhost:8080/3/>
+
+Las tres páginas incluyen un selector fijo para compararlas sin volver al
+directorio del proyecto.
 
 No requiere instalación ni proceso de compilación. La carpeta completa puede
 publicarse como sitio estático en Cloudflare Pages.
-

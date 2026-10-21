@@ -3,3 +3,9 @@
 .vscode/
 node_modules/
 
+# Archivos de trabajo y revisión visual (no forman parte del sitio publicado)
+work/
+.impeccable/
+design-system/
+PRODUCT.md
+propuesta-*.jpg
