@@ -21,8 +21,21 @@ def build(destination):
     html = (ROOT / 'index.html').read_text()
     html, removed = re.subn(r'<nav class="proposal-switcher".*?</nav>\s*', '', html, count=1, flags=re.S)
     assert removed == 1, 'No se encontró el selector de propuestas'
+    html = html.replace('<meta name="robots" content="noindex,follow">\n', '')
     html = html.replace('<title>MAB Arquitectos — Casa desplegada</title>',
-                        '<title>MAB Arquitectos en Mendoza — Materializando sueños</title>')
+                        '<title>Arquitectos en Mendoza | MAB Arquitectos</title>')
+    description = 'Estudio de arquitectura en Mendoza. MAB Arquitectos: diseño de viviendas, desarrollo de proyectos y seguimiento de obra. Conocé nuestras obras y consultanos.'
+    html = re.sub(r'<meta name="description" content="[^"]*">',
+                  f'<meta name="description" content="{description}">', html)
+    html = re.sub(r'<meta property="og:title" content="[^"]*">',
+                  '<meta property="og:title" content="Arquitectos en Mendoza | MAB Arquitectos">', html)
+    html = re.sub(r'<meta property="og:description" content="[^"]*">',
+                  f'<meta property="og:description" content="{description}">', html)
+    html = html.replace('Diseño, proceso y obra para que tu próxima casa en Mendoza sea una realidad.',
+                        'Arquitectura, diseño y seguimiento de obra para que tu próxima casa en Mendoza sea una realidad.')
+    html = html.replace('MAB nace del trabajo conjunto de Helga Aranda y Enzo Bernal.',
+                        'MAB es un estudio de arquitectura en Mendoza, integrado por Helga Aranda y Enzo Bernal.')
+    html = html.replace('Mendoza, Argentina ©', 'Estudio de arquitectura · Mendoza, Argentina ©')
     html = html.replace('https://mab-arquitectos.pages.dev', DOMAIN)
     metadata = f'''<link rel="canonical" href="{DOMAIN}/">
 <meta property="og:url" content="{DOMAIN}/">
@@ -31,6 +44,29 @@ def build(destination):
 <meta property="og:image:alt" content="Galería y patio de la Vivienda M&amp;G, MAB Arquitectos">
 '''
     html = html.replace('<meta name="twitter:card"', metadata + '<meta name="twitter:card"')
+    # Organization is appropriate until a public business address is confirmed.
+    # Do not invent a LocalBusiness address, coordinates, hours or review ratings.
+    organization_id = DOMAIN + '/#estudio'
+    services = ['Diseño de viviendas', 'Desarrollo de proyectos de arquitectura', 'Seguimiento de obra']
+    structured = {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'Organization', '@id': organization_id, 'name': 'MAB Arquitectos',
+         'url': DOMAIN + '/', 'description': description,
+         'logo': DOMAIN + '/assets/images/mab-lockup.png',
+         'image': DOMAIN + '/assets/images/mg-patio.v1.webp',
+         'email': 'aranda.bernal.arq@gmail.com', 'telephone': '+5492615879664',
+         'sameAs': ['https://www.instagram.com/mab.arquitectos/'],
+         'areaServed': {'@type': 'State', 'name': 'Mendoza, Argentina'}},
+        {'@type': 'WebSite', '@id': DOMAIN + '/#website', 'url': DOMAIN + '/',
+         'name': 'MAB Arquitectos', 'inLanguage': 'es-AR', 'publisher': {'@id': organization_id}},
+        {'@type': 'WebPage', '@id': DOMAIN + '/#webpage', 'url': DOMAIN + '/',
+         'name': 'Arquitectos en Mendoza | MAB Arquitectos', 'inLanguage': 'es-AR',
+         'isPartOf': {'@id': DOMAIN + '/#website'}, 'about': {'@id': organization_id}},
+        *[{'@type': 'Service', '@id': DOMAIN + f'/#servicio-{index}', 'name': service,
+           'provider': {'@id': organization_id}, 'areaServed': {'@type': 'State', 'name': 'Mendoza, Argentina'}}
+          for index, service in enumerate(services, 1)]
+    ]}
+    html = html.replace('</head>', '<script type="application/ld+json">' +
+                        json.dumps(structured, ensure_ascii=False).replace('</', '<\\/') + '</script>\n</head>')
     html = html.replace('name="propuesta" value="1"', 'name="origen" value="mabarquitectos.com"')
     html = html.replace('class="proposal-1"', 'class="proposal-1 production-site"')
     # Content hashes ensure a fresh asset after each change, without manual version bumps.
@@ -67,8 +103,13 @@ def build(destination):
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
 ''')
     assert 'proposal-switcher' not in html
+    assert 'noindex' not in html, 'El dominio de producción debe ser indexable'
     assert not any((destination / route).exists() for route in ['2', '3', '4'])
     print(json.dumps({'destination': str(destination), 'domain': DOMAIN,
                       'files': sum(p.is_file() for p in destination.rglob('*'))}, ensure_ascii=False))
