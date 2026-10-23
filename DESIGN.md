@@ -104,3 +104,13 @@ almacenan en el navegador ni se incluyen en URLs.
 La propuesta 1 es la versión elegida para `mabarquitectos.com`. El empaquetado
 separado elimina el selector y las rutas alternativas sin alterar el espacio
 de comparación. Ver `PRODUCCION.md` para generación, publicación y dominio.
+
+## Servicios — `/servicios/`
+
+Página de lectura y consulta que extiende Casa desplegada: cabecera amarilla,
+ tipografía Archivo/Jost, imagen original M&G y énfasis amarillo en el título.
+ Descripciones en franjas con títulos a la izquierda y lectura a la derecha;
+ preguntas mediante details nativos. Conserva el contacto y los datos locales.
+ En móvil apila texto e imagen y mantiene navegación entre páginas. El contenido
+ se edita en content/services.html y content/services.css; se empaqueta solo para
+ producción mediante tools/services_page.py.

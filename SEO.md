@@ -100,3 +100,23 @@ Ituzaingó 1732, departamento 2, Ciudad de Mendoza, Mendoza, Argentina.
 Pin: -32.8834942, -68.8298801. Atienden clientes en el estudio de lunes a
 viernes de 9 a 18 h y trabajan en toda la provincia. El portero identifica MAB;
 no existe cartel exterior. La aprobación de Google no está confirmada.
+
+## Segunda entrega: servicios
+
+Se incorpora `/servicios/` con descripción de diseño de viviendas, desarrollo
+ de proyectos y seguimiento de obra, preguntas prácticas y formulario. Tiene
+ título y descripción propios, canonical, BreadcrumbList, enlaces HTML desde
+ la navegación y el proceso de la portada, y entrada en el sitemap. El CPA
+ oficial M5500BAJ se incorpora a LocalBusiness en ambas páginas.
+
+La ficha de Maps fue creada por el usuario; está pendiente de revisión/publicación
+ por Google. No crear otra ficha durante la revisión. El plazo mostrado al usuario
+ es una estimación de Google, no una fecha confirmada de publicación.
+
+Search Console: el usuario agregó la propiedad de dominio; está pendiente de
+ confirmar su estado de verificación. Solo después de verificar, enviar sitemap
+ e inspeccionar `/` y `/servicios/`. No se solicitó indexación desde este chat.
+
+Siguiente contenido: fichas de M&G, SG y El Cerezo. Requieren información del
+ estudio sobre ubicación publicable, estado, año y alcance de intervención. No
+ redactar historias de proyecto a partir de imágenes ni inventar datos técnicos.

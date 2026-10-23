@@ -23,7 +23,7 @@ antes de publicar para incluirlos.
 ## Contenido de producción
 
 `tools/build-production.py --output CARPETA_NUEVA` genera solo la propuesta 1,
-sus fuentes, marca, imágenes, galerías, formulario y página 404. Elimina el
+la página `/servicios/`, sus fuentes, marca, imágenes, galerías, formulario y página 404. Elimina el
 selector, identifica las consultas como provenientes de mabarquitectos.com,
 actualiza título, canonical y Open Graph e incorpora robots.txt y sitemap.xml.
 Versiona CSS y JS por contenido para evitar recursos viejos en caché.
@@ -60,3 +60,6 @@ Formspree, permitir `mabarquitectos.com`.
 
 Documentación: https://developers.cloudflare.com/pages/configuration/custom-domains/
 y https://developers.cloudflare.com/pages/how-to/www-redirect/.
+
+La página de servicios hereda la cabecera y el contacto de producción, con sus
+propios metadatos, canonical y breadcrumbs. El sitemap incluye ambas rutas.

@@ -17,9 +17,10 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
   const wasOpen = toggle.getAttribute('aria-expanded') === 'true';
   setMenu(false);
   if (wasOpen) {
-    const target = document.querySelector(link.getAttribute('href'));
-    target.setAttribute('tabindex', '-1');
-    target.focus({ preventScroll: true });
+    const href = link.getAttribute('href');
+    const target = href?.startsWith('#') ? document.querySelector(href) : null;
+    target?.setAttribute('tabindex', '-1');
+    target?.focus({ preventScroll: true });
   }
 }));
 mobile.addEventListener('change', () => setMenu(false));

@@ -6,6 +6,7 @@ import json
 import re
 import shutil
 from pathlib import Path
+from services_page import build_services
 
 ROOT = Path(__file__).resolve().parents[1]
 DOMAIN = 'https://mabarquitectos.com'
@@ -46,6 +47,10 @@ def build(destination):
     html = html.replace('<p>Contanos qué tenés en mente. Coordinemos una primera charla.</p>',
                         '<p>Contanos qué tenés en mente. Coordinemos una primera charla.</p>\n' + location)
     html = html.replace('https://mab-arquitectos.pages.dev', DOMAIN)
+    html = html.replace('<nav id="nav" aria-label="Navegación principal">',
+                        '<nav id="nav" aria-label="Navegación principal">\n<a href="/servicios/">Servicios</a>')
+    html = re.sub(r'(<div class="process-intro">)(.*?)(</div>)',
+                  r'\1<div>\2<a class="services-link" href="/servicios/">Conocé nuestros servicios</a></div>\3', html, count=1, flags=re.S)
     metadata = f'''<link rel="canonical" href="{DOMAIN}/">
 <meta property="og:url" content="{DOMAIN}/">
 <meta property="og:site_name" content="MAB Arquitectos">
@@ -64,7 +69,8 @@ def build(destination):
          'email': 'aranda.bernal.arq@gmail.com', 'telephone': '+5492615879664',
          'sameAs': ['https://www.instagram.com/mab.arquitectos/'],
          'address': {'@type': 'PostalAddress', 'streetAddress': 'Ituzaingó 1732, departamento 2',
-                     'addressLocality': 'Ciudad de Mendoza', 'addressRegion': 'Mendoza', 'addressCountry': 'AR'},
+                     'addressLocality': 'Ciudad de Mendoza', 'addressRegion': 'Mendoza',
+                     'postalCode': 'M5500BAJ', 'addressCountry': 'AR'},
          'geo': {'@type': 'GeoCoordinates', 'latitude': -32.8834942, 'longitude': -68.8298801},
          'hasMap': 'https://www.google.com/maps?q=-32.8834942,-68.8298801',
          'openingHoursSpecification': [{'@type': 'OpeningHoursSpecification',
@@ -77,6 +83,7 @@ def build(destination):
          'name': 'Arquitectos en Mendoza | MAB Arquitectos', 'inLanguage': 'es-AR',
          'isPartOf': {'@id': DOMAIN + '/#website'}, 'about': {'@id': organization_id}},
         *[{'@type': 'Service', '@id': DOMAIN + f'/#servicio-{index}', 'name': service,
+           'url': DOMAIN + '/servicios/#' + ['diseno-viviendas', 'proyecto-arquitectura', 'seguimiento-obra'][index - 1],
            'provider': {'@id': organization_id}, 'areaServed': {'@type': 'State', 'name': 'Mendoza, Argentina'}}
           for index, service in enumerate(services, 1)]
     ]}
@@ -91,11 +98,13 @@ def build(destination):
             content += b'\n.production-site .site-footer{padding-bottom:30px}\n'
             content += '''.studio-location{display:flex;flex-direction:column;gap:12px;margin-top:32px;padding-top:24px;border-top:1px solid #6c652e;font-style:normal;font-size:17px;line-height:1.5;max-width:42ch}
 .studio-location strong{font-weight:550;font-family:Archivo,sans-serif;font-size:22px;letter-spacing:-.02em}.studio-location a{width:fit-content;min-height:44px;display:flex;align-items:center}.contact .service-area{font-size:16px;margin-top:14px}
+.services-link{display:inline-flex;min-height:44px;align-items:center;font-size:16px;margin-top:16px;text-underline-offset:5px}.services-link:hover{background:var(--yellow)}
 '''.encode('utf-8')
         (destination / name).write_bytes(content)
         digest = hashlib.sha256(content).hexdigest()[:12]
         html = re.sub(re.escape(name) + r'\?v=[^"\s]+', name + '?v=' + digest, html)
     (destination / 'index.html').write_text(html)
+    build_services(ROOT, destination, html, structured, DOMAIN)
     # Copy only the assets used by this proposal, including lazy gallery photos.
     assets = set(re.findall(r'assets/[\w./-]+', html + (ROOT / 'shared.css').read_text()))
     gallery = re.findall(r"\[\s*\['([\w-]+)'|\],\s*\['([\w-]+)'", (ROOT / 'scripts.js').read_text())
@@ -107,7 +116,7 @@ def build(destination):
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
     (destination / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {DOMAIN}/sitemap.xml\n')
-    (destination / 'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{DOMAIN}/</loc></url></urlset>\n')
+    (destination / 'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{DOMAIN}/</loc></url><url><loc>{DOMAIN}/servicios/</loc></url></urlset>\n')
     # A real 404 prevents Pages from serving the homepage for obsolete proposal URLs.
     (destination / '404.html').write_text('''<!doctype html><html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
