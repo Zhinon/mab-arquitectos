@@ -35,7 +35,16 @@ def build(destination):
                         'Arquitectura, diseño y seguimiento de obra para que tu próxima casa en Mendoza sea una realidad.')
     html = html.replace('MAB nace del trabajo conjunto de Helga Aranda y Enzo Bernal.',
                         'MAB es un estudio de arquitectura en Mendoza, integrado por Helga Aranda y Enzo Bernal.')
-    html = html.replace('Mendoza, Argentina ©', 'Estudio de arquitectura · Mendoza, Argentina ©')
+    html = html.replace('<p>Mendoza, Argentina</p>', '<p>Estudio de arquitectura · Mendoza, Argentina</p>')
+    location = '''<address class="studio-location">
+<strong>Visitá el estudio</strong>
+<span>Ituzaingó 1732, departamento 2.<br>Ciudad de Mendoza, Mendoza, Argentina.</span>
+<span>Lunes a viernes, de 9 a 18 h.</span>
+<a href="https://www.google.com/maps?q=-32.8834942,-68.8298801" target="_blank" rel="noopener noreferrer">Ver ubicación en Google Maps</a>
+</address>
+<p class="service-area">Trabajamos en toda la provincia de Mendoza.</p>'''
+    html = html.replace('<p>Contanos qué tenés en mente. Coordinemos una primera charla.</p>',
+                        '<p>Contanos qué tenés en mente. Coordinemos una primera charla.</p>\n' + location)
     html = html.replace('https://mab-arquitectos.pages.dev', DOMAIN)
     metadata = f'''<link rel="canonical" href="{DOMAIN}/">
 <meta property="og:url" content="{DOMAIN}/">
@@ -44,17 +53,23 @@ def build(destination):
 <meta property="og:image:alt" content="Galería y patio de la Vivienda M&amp;G, MAB Arquitectos">
 '''
     html = html.replace('<meta name="twitter:card"', metadata + '<meta name="twitter:card"')
-    # Organization is appropriate until a public business address is confirmed.
-    # Do not invent a LocalBusiness address, coordinates, hours or review ratings.
+    # Business address, pin, reception of clients and hours confirmed by the owner.
     organization_id = DOMAIN + '/#estudio'
     services = ['Diseño de viviendas', 'Desarrollo de proyectos de arquitectura', 'Seguimiento de obra']
     structured = {'@context': 'https://schema.org', '@graph': [
-        {'@type': 'Organization', '@id': organization_id, 'name': 'MAB Arquitectos',
+        {'@type': 'LocalBusiness', '@id': organization_id, 'name': 'MAB Arquitectos',
          'url': DOMAIN + '/', 'description': description,
          'logo': DOMAIN + '/assets/images/mab-lockup.png',
          'image': DOMAIN + '/assets/images/mg-patio.v1.webp',
          'email': 'aranda.bernal.arq@gmail.com', 'telephone': '+5492615879664',
          'sameAs': ['https://www.instagram.com/mab.arquitectos/'],
+         'address': {'@type': 'PostalAddress', 'streetAddress': 'Ituzaingó 1732, departamento 2',
+                     'addressLocality': 'Ciudad de Mendoza', 'addressRegion': 'Mendoza', 'addressCountry': 'AR'},
+         'geo': {'@type': 'GeoCoordinates', 'latitude': -32.8834942, 'longitude': -68.8298801},
+         'hasMap': 'https://www.google.com/maps?q=-32.8834942,-68.8298801',
+         'openingHoursSpecification': [{'@type': 'OpeningHoursSpecification',
+             'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+             'opens': '09:00', 'closes': '18:00'}],
          'areaServed': {'@type': 'State', 'name': 'Mendoza, Argentina'}},
         {'@type': 'WebSite', '@id': DOMAIN + '/#website', 'url': DOMAIN + '/',
          'name': 'MAB Arquitectos', 'inLanguage': 'es-AR', 'publisher': {'@id': organization_id}},
@@ -74,6 +89,9 @@ def build(destination):
         content = (ROOT / name).read_bytes()
         if name == 'shared.css':
             content += b'\n.production-site .site-footer{padding-bottom:30px}\n'
+            content += '''.studio-location{display:flex;flex-direction:column;gap:12px;margin-top:32px;padding-top:24px;border-top:1px solid #6c652e;font-style:normal;font-size:17px;line-height:1.5;max-width:42ch}
+.studio-location strong{font-weight:550;font-family:Archivo,sans-serif;font-size:22px;letter-spacing:-.02em}.studio-location a{width:fit-content;min-height:44px;display:flex;align-items:center}.contact .service-area{font-size:16px;margin-top:14px}
+'''.encode('utf-8')
         (destination / name).write_bytes(content)
         digest = hashlib.sha256(content).hexdigest()[:12]
         html = re.sub(re.escape(name) + r'\?v=[^"\s]+', name + '?v=' + digest, html)

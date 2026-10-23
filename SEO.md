@@ -10,9 +10,9 @@ diferentes. La distancia del usuario influye en Maps.
 - Título: Arquitectos en Mendoza | MAB Arquitectos.
 - Descripción y textos visibles precisan arquitectura, proyectos y seguimiento
   de obra en Mendoza, sin repetir palabras artificialmente ni cambiar el lema.
-- Datos estructurados Organization, WebSite, WebPage y Service. Dirección,
-  horarios y coordenadas comerciales no se inventan; LocalBusiness se incorpora
-  cuando se confirme la dirección pública y el modo de atención.
+- Datos estructurados LocalBusiness, WebSite, WebPage y Service. El usuario confirmó
+  dirección pública, pin, recepción de clientes y horario de lunes a viernes
+  de 9 a 18. Se incorporan en texto visible y en datos estructurados.
 - Canonical al dominio principal. Sitemap y robots existentes se conservan.
 - Comparación: meta noindex,follow en las cuatro propuestas. Producción elimina
   expresamente esa etiqueta durante el empaquetado, con una aserción de seguridad.
@@ -93,3 +93,10 @@ Métrica principal: consultas calificadas y proyectos, no solo posiciones.
 - https://developers.google.com/search/docs/appearance/structured-data/organization
 - https://developers.google.com/search/docs/appearance/structured-data/local-business
 - https://developers.cloudflare.com/pages/configuration/headers/
+
+## Datos confirmados del estudio
+
+Ituzaingó 1732, departamento 2, Ciudad de Mendoza, Mendoza, Argentina.
+Pin: -32.8834942, -68.8298801. Atienden clientes en el estudio de lunes a
+viernes de 9 a 18 h y trabajan en toda la provincia. El portero identifica MAB;
+no existe cartel exterior. La aprobación de Google no está confirmada.
