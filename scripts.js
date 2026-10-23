@@ -2,7 +2,7 @@
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#nav');
 const mobile = matchMedia('(max-width: 900px)');
-const background = [document.querySelector('main'), document.querySelector('.site-footer'), document.querySelector('.proposal-switcher')];
+const background = [document.querySelector('main'), document.querySelector('.site-footer'), document.querySelector('.proposal-switcher')].filter(Boolean);
 function setMenu(open, restoreFocus = false) {
   toggle.setAttribute('aria-expanded', String(open));
   toggle.textContent = open ? 'Cerrar' : 'Menú';

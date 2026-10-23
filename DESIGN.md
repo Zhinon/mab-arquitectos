@@ -98,3 +98,9 @@ Se incluyen asunto, propuesta y honeypot. Hay validación por campo, estado de
 envío, prevención de doble clic y errores de servidor, límite y conexión. Los
 datos se conservan al fallar y se limpian solo tras respuesta exitosa. No se
 almacenan en el navegador ni se incluyen en URLs.
+
+## Producción
+
+La propuesta 1 es la versión elegida para `mabarquitectos.com`. El empaquetado
+separado elimina el selector y las rutas alternativas sin alterar el espacio
+de comparación. Ver `PRODUCCION.md` para generación, publicación y dominio.
