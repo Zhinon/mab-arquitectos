@@ -14,10 +14,11 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/jost-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="shared.css?v=20261021-5">
+<link rel="stylesheet" href="shared.css?v=20261023-1">
 <link rel="stylesheet" href="styles.css?v=20261021-4">
 <script src="scripts.js?v=20261021-4" defer>
 </script>
+<script src="contact.js?v=20261023-1" defer></script>
 </head>
 <body class="proposal-1" data-asset-prefix="">
 <a class="skip-link" href="#contenido">Ir al contenido</a>
@@ -224,6 +225,22 @@
 <h2 id="contact-title">Tu proyecto puede empezar<br>con una conversación.</h2>
 <p>Contanos qué tenés en mente. Coordinemos una primera charla.</p>
 </div>
+<div class="contact-panel">
+<form class="contact-form" action="https://formspree.io/f/xbggjbdg" method="POST" aria-labelledby="form-title">
+<h3 id="form-title">Contanos tu idea.</h3>
+<p class="form-intro">Dejanos un mensaje y tu correo para que podamos responderte.</p>
+<input type="hidden" name="_subject" value="Nueva consulta · MAB Arquitectos">
+<input type="hidden" name="propuesta" value="1">
+<div class="form-fields">
+<div class="form-field"><label for="contact-name">Nombre</label><input id="contact-name" aria-describedby="name-error" name="name" autocomplete="name" required maxlength="100"><span class="field-error" id="name-error"></span></div>
+<div class="form-field"><label for="contact-email">Correo electrónico</label><input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="254" aria-describedby="email-error"><span class="field-error" id="email-error"></span></div>
+<div class="form-field form-message"><label for="contact-message">¿Qué tenés en mente?</label><textarea id="contact-message" name="message" rows="3" required maxlength="5000" aria-describedby="message-error"></textarea><span class="field-error" id="message-error"></span></div>
+</div>
+<div class="form-trap" aria-hidden="true"><label for="contact-company">Dejá este campo vacío</label><input id="contact-company" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+<button class="button button-dark form-submit" type="submit"><span>Enviar consulta</span><svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h17M13 5l7 7-7 7"/></svg></button>
+<p class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+</form>
+<div class="contact-alternatives"><p>O conversemos por acá.</p>
 <div class="contact-actions">
 <a class="button button-dark" href="https://wa.me/5492615879664">Escribir por WhatsApp<svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
 <path d="M3 12h17M13 5l7 7-7 7"/>
@@ -231,6 +248,8 @@
 </a>
 <a href="mailto:aranda.bernal.arq@gmail.com">aranda.bernal.arq@gmail.com</a>
 <a href="https://www.instagram.com/mab.arquitectos/" target="_blank" rel="noopener noreferrer">@mab.arquitectos</a>
+</div>
+</div>
 </div>
 </section>
 </main>

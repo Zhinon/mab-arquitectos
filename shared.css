@@ -21,3 +21,20 @@
 .contact>div{min-width:0}
 /* Cuarta opción de revisión: los bocetos y adicionales. */
 .proposal-switcher .proposal-extras{width:auto;min-width:116px;padding:0 12px;display:flex;justify-content:center;gap:7px;font-size:13px}
+
+/* Contacto: formulario y vías directas conservan el lenguaje de cada propuesta. */
+.contact:has(.contact-panel){align-items:start;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+.contact-panel{min-width:0}.contact-form{position:relative;border-top:1px solid currentColor;padding-top:25px}
+.contact-form h3{font-size:clamp(24px,2.4vw,32px);font-weight:500}.contact-form .form-intro{font-size:16px;line-height:1.5;margin:12px 0 26px;max-width:40ch}
+.form-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px}.form-field{min-width:0;display:flex;flex-direction:column;gap:8px}.form-message{grid-column:1/-1}
+.form-field label{font-size:15px;font-weight:550}.form-field input,.form-field textarea{width:100%;min-width:0;border:0;border-bottom:1px solid #6c652e;border-radius:0;background:#fff9;color:var(--ink);font:inherit;font-size:17px;line-height:1.5;padding:12px;min-height:50px;caret-color:var(--ink)}
+.form-field textarea{resize:vertical;min-height:114px;max-height:500px}.form-field input:hover,.form-field textarea:hover{background:#fffc}.form-field input:focus-visible,.form-field textarea:focus-visible{outline:2px solid var(--ink);outline-offset:2px;background:#fffdf6}
+.form-field [aria-invalid="true"]{border-bottom-color:#852d24}.field-error{color:#852d24;font-size:14px;line-height:1.4}.field-error:empty{display:none}
+.form-trap{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.form-submit{border:0;width:100%;margin-top:24px}.form-submit:disabled{opacity:.65;cursor:wait}.contact-form .form-status{font-size:16px;line-height:1.5;margin:14px 0 0;max-width:100%;min-height:0}.form-status:empty{display:none}
+.contact-alternatives{margin-top:30px;border-top:1px solid #6c652e;padding-top:20px}.contact-alternatives>p{font-size:15px;margin:0 0 16px}.contact-alternatives .contact-actions{gap:12px}.contact-alternatives .contact-actions>.button{background:transparent;color:var(--ink);border:1px solid currentColor}.contact-alternatives .contact-actions>.button:hover{background:#fff6}
+[data-contact-style="band"] .contact-form{border-top:3px solid var(--ink)}
+[data-contact-style="paper"] .contact-form{border:0;padding:clamp(20px,3vw,38px);background:#fffdf6;box-shadow:3px 9px 22px #30221418}
+[data-contact-style="paper"] .form-field input,[data-contact-style="paper"] .form-field textarea{background:var(--paper);border-bottom-color:var(--line)}
+[data-contact-style="paper"] .form-submit{background:var(--yellow);color:var(--ink)}[data-contact-style="paper"] .form-submit:hover{background:#eddb32}
+@media(max-width:900px){.contact:has(.contact-panel){grid-template-columns:1fr;gap:36px}.contact-panel{width:100%;max-width:680px}.contact h2{max-width:14ch}}
+@media(max-width:480px){.form-fields{grid-template-columns:1fr;gap:18px}.form-message{grid-column:auto}.contact:has(.contact-panel){padding-bottom:60px}.contact-form .form-intro{margin-bottom:22px}}

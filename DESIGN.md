@@ -83,3 +83,18 @@ Las capas SVG e imagen comparten encuadre y proporciones; el dibujo se adapta al
 ancho disponible. La navegación de proyectos permite desplazamiento horizontal
 solo dentro de esa navegación en teléfonos angostos. El selector global sigue
 presente en las cuatro rutas.
+
+## Formulario de contacto
+
+Las cuatro rutas incorporan un formulario breve (nombre, correo, mensaje) y
+conservan los accesos directos. Casa desplegada y Adicionales usan campos claros
+sobre amarillo; Franja de obra refuerza la línea superior; Mesa de proyecto usa
+una hoja cálida con sombra suave. En móvil los campos se apilan.
+
+El destino es `https://formspree.io/f/xbggjbdg`, mediante POST HTML y mejora
+progresiva en `contact.js` (AJAX sin dependencia externa). El campo `email`
+permite responder al remitente; la casilla receptora se configura en Formspree.
+Se incluyen asunto, propuesta y honeypot. Hay validación por campo, estado de
+envío, prevención de doble clic y errores de servidor, límite y conexión. Los
+datos se conservan al fallar y se limpian solo tras respuesta exitosa. No se
+almacenan en el navegador ni se incluyen en URLs.
