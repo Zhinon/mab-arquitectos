@@ -42,7 +42,7 @@ def build(destination):
 <strong>Visitá el estudio</strong>
 <span>Ituzaingó 1732, departamento 2.<br>Ciudad de Mendoza, Mendoza, Argentina.</span>
 <span>Lunes a viernes, de 9 a 18 h.</span>
-<a href="{MAPS_PROFILE}" target="_blank" rel="noopener noreferrer">Ver ficha en Google Maps</a>
+<a href="{MAPS_PROFILE}" target="_blank" rel="noopener noreferrer">Ver en Google Maps</a>
 </address>
 <p class="service-area">Trabajamos en toda la provincia de Mendoza.</p>'''
     html = html.replace('<p>Contanos qué tenés en mente. Coordinemos una primera charla.</p>',
