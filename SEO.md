@@ -120,3 +120,18 @@ Search Console: el usuario agregó la propiedad de dominio; está pendiente de
 Siguiente contenido: fichas de M&G, SG y El Cerezo. Requieren información del
  estudio sobre ubicación publicable, estado, año y alcance de intervención. No
  redactar historias de proyecto a partir de imágenes ni inventar datos técnicos.
+
+## Ficha pública de Google Maps
+
+El usuario compartió la ficha pública de MAB Arquitectos y se comprobó su
+visibilidad sin iniciar sesión. Dirección, web, teléfono y horario coinciden.
+Se vincula desde el contacto de ambas páginas y desde hasMap/sameAs. La nueva
+posición del pin difiere aproximadamente 40 m del pin inicial; se pidió confirmar
+el acceso antes de modificar las coordenadas estructuradas. La visibilidad de
+la ficha no acredita una posición determinada en resultados locales.
+
+El usuario confirmó que hay que corregir el marcador de Maps hacia el acceso
+sobre Ituzaingó. Se conservan las coordenadas inicialmente confirmadas en la
+web. Se usa el enlace estable de la ficha, verificado en el navegador:
+https://www.google.com/maps?cid=8640582937418830544
+El usuario debe ajustar el pin desde la administración de su perfil.

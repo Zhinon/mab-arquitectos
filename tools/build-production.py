@@ -10,6 +10,7 @@ from services_page import build_services
 
 ROOT = Path(__file__).resolve().parents[1]
 DOMAIN = 'https://mabarquitectos.com'
+MAPS_PROFILE = 'https://www.google.com/maps?cid=8640582937418830544'
 
 
 def build(destination):
@@ -37,11 +38,11 @@ def build(destination):
     html = html.replace('MAB nace del trabajo conjunto de Helga Aranda y Enzo Bernal.',
                         'MAB es un estudio de arquitectura en Mendoza, integrado por Helga Aranda y Enzo Bernal.')
     html = html.replace('<p>Mendoza, Argentina</p>', '<p>Estudio de arquitectura · Mendoza, Argentina</p>')
-    location = '''<address class="studio-location">
+    location = f'''<address class="studio-location">
 <strong>Visitá el estudio</strong>
 <span>Ituzaingó 1732, departamento 2.<br>Ciudad de Mendoza, Mendoza, Argentina.</span>
 <span>Lunes a viernes, de 9 a 18 h.</span>
-<a href="https://www.google.com/maps?q=-32.8834942,-68.8298801" target="_blank" rel="noopener noreferrer">Ver ubicación en Google Maps</a>
+<a href="{MAPS_PROFILE}" target="_blank" rel="noopener noreferrer">Ver ficha en Google Maps</a>
 </address>
 <p class="service-area">Trabajamos en toda la provincia de Mendoza.</p>'''
     html = html.replace('<p>Contanos qué tenés en mente. Coordinemos una primera charla.</p>',
@@ -67,12 +68,12 @@ def build(destination):
          'logo': DOMAIN + '/assets/images/mab-lockup.png',
          'image': DOMAIN + '/assets/images/mg-patio.v1.webp',
          'email': 'aranda.bernal.arq@gmail.com', 'telephone': '+5492615879664',
-         'sameAs': ['https://www.instagram.com/mab.arquitectos/'],
+         'sameAs': ['https://www.instagram.com/mab.arquitectos/', MAPS_PROFILE],
          'address': {'@type': 'PostalAddress', 'streetAddress': 'Ituzaingó 1732, departamento 2',
                      'addressLocality': 'Ciudad de Mendoza', 'addressRegion': 'Mendoza',
                      'postalCode': 'M5500BAJ', 'addressCountry': 'AR'},
          'geo': {'@type': 'GeoCoordinates', 'latitude': -32.8834942, 'longitude': -68.8298801},
-         'hasMap': 'https://www.google.com/maps?q=-32.8834942,-68.8298801',
+         'hasMap': MAPS_PROFILE,
          'openingHoursSpecification': [{'@type': 'OpeningHoursSpecification',
              'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
              'opens': '09:00', 'closes': '18:00'}],
